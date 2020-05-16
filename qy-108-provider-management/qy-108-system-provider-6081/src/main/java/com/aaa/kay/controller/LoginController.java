@@ -1,11 +1,9 @@
 package com.aaa.kay.controller;
 
 import com.aaa.kay.mapper.LoginService;
-import com.aaa.kay.mapper.UserMapper;
 import com.aaa.kay.model.User;
 import com.aaa.kay.redis.RedisService;
 import com.aaa.kay.vo.TokenVo;
-import com.sun.deploy.panel.TreeEditors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
