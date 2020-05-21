@@ -15,6 +15,7 @@ import static com.aaa.kay.staticstatus.RedisProperties.*;
  **/
 @Service
 public class RedisService<T> {
+
     @Autowired
     private JedisCluster jedisCluster;
     /**

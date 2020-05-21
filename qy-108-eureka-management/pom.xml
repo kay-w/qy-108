@@ -16,6 +16,12 @@
         <module>qy-108-eureka-7082</module>
         <module>qy-108-eureka-7083</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -1,6 +1,6 @@
 package com.aaa.kay.controller;
 
-import com.aaa.kay.mapper.LoginService;
+import com.aaa.kay.service.LoginService;
 import com.aaa.kay.model.User;
 import com.aaa.kay.redis.RedisService;
 import com.aaa.kay.vo.TokenVo;
@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
+
 /**
  * @ClassName LoginController
- * @Description: TODO
+ * @Description: 登录操作
  * @Author 59983
  * @Date 2020/5/16
  * @Version V1.0
@@ -23,9 +26,10 @@ public class LoginController {
     @Autowired
     private RedisService redisService;
     @PostMapping("/doLogin")
-    public TokenVo doLogin(@RequestBody User user){
-        return loginService.doLogin(user,redisService);
+    public TokenVo doLogin(@RequestBody User user, HttpServletRequest request){
+        return loginService.doLogin(user,redisService,request);
 
     }
+
 
 }

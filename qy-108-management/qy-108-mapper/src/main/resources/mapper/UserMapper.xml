@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.springboot1212.mapper.LoginEntityMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.springboot1212.model.LoginEntity">
+<mapper namespace="com.aaa.kay.service.UserMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.kay.model.User">
     <id column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -18,49 +18,5 @@
     <result column="type" jdbcType="CHAR" property="type" />
     <result column="token" jdbcType="VARCHAR" property="token" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_user
-    where user_id = #{userId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.aaa.springboot1212.model.LoginEntity">
-    insert into t_user (user_id, username, password, 
-      dept_id, email, mobile, 
-      status, create_time, modify_time, 
-      last_login_time, ssex, description, 
-      avatar, type, token)
-    values (#{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{deptId,jdbcType=BIGINT}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP}, #{ssex,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
-      #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{token,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.springboot1212.model.LoginEntity">
-    update t_user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      dept_id = #{deptId,jdbcType=BIGINT},
-      email = #{email,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      status = #{status,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      ssex = #{ssex,jdbcType=CHAR},
-      description = #{description,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR},
-      type = #{type,jdbcType=CHAR},
-      token = #{token,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=BIGINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select user_id, username, password, dept_id, email, mobile, status, create_time, 
-    modify_time, last_login_time, ssex, description, avatar, type, token
-    from t_user
-    where user_id = #{userId,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select user_id, username, password, dept_id, email, mobile, status, create_time, 
-    modify_time, last_login_time, ssex, description, avatar, type, token
-    from t_user
-  </select>
+
 </mapper>

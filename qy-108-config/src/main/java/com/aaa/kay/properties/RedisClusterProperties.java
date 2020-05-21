@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "spring.redis")
 @Data
 public class RedisClusterProperties {
-    private String modes;
+    private String nodes;
     private Integer maxAttempts;
     private Integer commandTimeout;
 }

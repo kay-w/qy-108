@@ -1,10 +1,11 @@
-package com.aaa.kay.mapper;
+package com.aaa.kay.service;
 
 import com.aaa.kay.model.User;
 import com.aaa.kay.vo.TokenVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 /**
  * @ClassName IQYService

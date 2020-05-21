@@ -2,7 +2,6 @@ package com.aaa.kay.config;
 
 
 import com.aaa.kay.properties.RedisClusterProperties;
-import io.netty.util.HashingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +33,7 @@ public class RedisClusterConfig {
     @Bean
     public JedisCluster getJedisCluster(){
         // 1 获取redis的IP地址以及端口号信息(192.168.23.166:6380,192.168.23.166:6381...6385)
-        String nodes= redisClusterProperties.getModes();
+        String nodes= redisClusterProperties.getNodes();
         String[] nodeArr = nodes.split(",");
         Set<HostAndPort> hostAndPortSet = new HashSet();
         for (String node : nodeArr){

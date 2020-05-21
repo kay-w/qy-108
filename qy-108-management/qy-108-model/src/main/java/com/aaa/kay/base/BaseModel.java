@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class BaseModel implements Serializable {
     @Id
     @NotNull
-    private Long id;
+    private Long userId;
 
     @Column(name = "create_time")
     @Max(value = 100, message = "时间长度最长不能超过100")
