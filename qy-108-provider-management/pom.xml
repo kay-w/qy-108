@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>qy-108-system-provider-6081</module>
+        <module>qy-108-system-provider-6082</module>
     </modules>
     <dependencies>
         <dependency>

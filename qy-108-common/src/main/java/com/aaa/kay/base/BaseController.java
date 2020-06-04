@@ -544,5 +544,155 @@ public class BaseController {
         resultData.setMsg(ADD_FAILED.getMsg());
         return resultData;
     }
+    /**
+     * @Description:
+     *             添加成功，使用系统消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:13
+     * @param
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData insertSuccess(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(INSERT_SUCCESS.getCode());
+        resultData.setMsg(INSERT_SUCCESS.getMsg());
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *             添加成功，使用自定义消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:13
+     * @param msg
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData insertSuccess(String msg){
+        ResultData resultData = new ResultData();
+        resultData.setCode(INSERT_SUCCESS.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *            添加失败，使用系统消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:13
+     * @param
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData insertFailed(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(INSERT_FAILED.getCode());
+        resultData.setMsg(INSERT_FAILED.getMsg());
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *             添加失败，使用自定义消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:14
+     * @param msg
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData insertFailed(String msg){
+        ResultData resultData = new ResultData();
+        resultData.setCode(INSERT_FAILED.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
+    /**
+     * @Description:
+     *             查询成功，使用系统消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectSuccess(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_SUCCESS.getCode());
+        resultData.setMsg(SELECT_SUCCESS.getMsg());
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *             查询成功，使用自定义消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param msg
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectSuccess(String msg){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_SUCCESS.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *            查询成功，使用系统消息，自定义返回数据
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param data
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectSuccess(Object data){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_SUCCESS.getCode());
+        resultData.setMsg(SELECT_SUCCESS.getMsg());
+        resultData.setData(data);
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *            查询失败，使用系统消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectFailed(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_FAILED.getCode());
+        resultData.setMsg(SELECT_FAILED.getMsg());
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *             查询失败，使用自定义消息
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param msg
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectFailed(String msg){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_FAILED.getCode());
+        resultData.setMsg(msg);
+        return resultData;
+    }
+
+    /**
+     * @Description:
+     *            查询失败，使用系统消息，自定义返回值
+     * @Author: York
+     * @Date: 2020/6/4 0004 9:16
+     * @param data
+     * @Return: com.york.base.ResultData
+     **/
+    protected ResultData selectFailed(Object data){
+        ResultData resultData = new ResultData();
+        resultData.setCode(SELECT_FAILED.getCode());
+        resultData.setMsg(SELECT_FAILED.getMsg());
+        resultData.setData(data);
+        return resultData;
+    }
 
 }

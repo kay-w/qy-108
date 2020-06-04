@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.kay.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.kay.model.Menu" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="MENU_ID" property="menuId" jdbcType="BIGINT" />
+    <result column="PARENT_ID" property="parentId" jdbcType="BIGINT" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="PATH" property="path" jdbcType="VARCHAR" />
+    <result column="COMPONENT" property="component" jdbcType="VARCHAR" />
+    <result column="PERMS" property="perms" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="CHAR" />
+    <result column="ORDER_NUM" property="orderNum" jdbcType="DOUBLE" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="MenuVo" type="com.aaa.kay.vo.MenuVo">
+
+  </resultMap>
+  <sql id="Base_List">
+        menuName,beginDate,endDate
+  </sql>
+  <select id="selectMenuByField" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select MENU_ID,PARENT_ID,MENU_NAME,PATH,COMPONENT,PERMS,ICON,TYPE,ORDER_NUM,CREATE_TIME,MODIFY_TIME
+    from t_menu where 1 = 1
+    <if test="menuName != null and menuName != ''">
+      and menu_name = #{menuName,jdbcType=VARCHAR}
+    </if>
+    <if test="beginDate != null and beginDate != ''">
+      and CREATE_TIME >= #{beginDate} and #{endDate} >= CREATE_TIME
+    </if>
+  </select>
+
+  <select id="selectMenuByParentId" resultMap="MenuVo" parameterType="java.lang.Object">
+        select * from t_menu where parent_id = #{parentId}
+  </select>
+  <insert id="insertMenuResultId"  useGeneratedKeys="true" keyProperty="menuId" parameterType="com.aaa.kay.model.Menu" >
+    insert into t_menu (MENU_ID, PARENT_ID, MENU_NAME,
+      PATH, COMPONENT, PERMS,
+      ICON, TYPE, ORDER_NUM, CREATE_TIME,
+      MODIFY_TIME)
+    values (#{menuId,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR},
+      #{path,jdbcType=VARCHAR}, #{component,jdbcType=VARCHAR}, #{perms,jdbcType=VARCHAR},
+      #{icon,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{orderNum,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR},
+      #{modifyTime,jdbcType=VARCHAR})
+  </insert>
+</mapper>

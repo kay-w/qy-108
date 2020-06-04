@@ -1,12 +1,10 @@
 package com.aaa.kay.controller;
 
-import com.aaa.kay.base.BaseController;
-import com.aaa.kay.base.ResultData;
+
 import com.aaa.kay.model.MappingUnit;
 import com.aaa.kay.service.MappingUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +18,7 @@ import java.util.Map;
  * @Description: MappingUnitController测绘单位的控制层
  */
 @RestController
-@RequestMapping("mappingUnit")
-public class MappingUnitController extends BaseController {
+public class MappingUnitController{
 
     @Autowired
     private MappingUnitService mappingUnitService;
@@ -35,17 +32,17 @@ public class MappingUnitController extends BaseController {
      * @Return: com.york.base.ResultData<java.util.List<com.york.model.MappingUnit>>
      **/
     @GetMapping("queryListMappingUnitByFiled")
-    public ResultData<List<MappingUnit>> queryAllMappingUnitByFiled(@RequestParam Map map){
+    public List<MappingUnit> queryAllMappingUnitByFiled(@RequestParam Map map){
         try {
             MappingUnit mappingUnit = mappingUnitService.newInstance(map);
             List<MappingUnit> mappingUnits = mappingUnitService.queryList(mappingUnit);
             if(null!=mappingUnits&&mappingUnits.size()>0) {
-                return querySuccess();
+                return mappingUnits;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return queryFailed();
+        return null;
     }
     /**
      * @Description:
@@ -57,17 +54,18 @@ public class MappingUnitController extends BaseController {
      * @Return: com.york.base.ResultData<com.york.model.MappingUnit>
      **/
     @GetMapping("queryOneMappingUnitByUserId")
-    public ResultData<MappingUnit> queryListMappingUnitByUserId(@RequestParam Long userId){
+    public MappingUnit queryListMappingUnitByUserId(@RequestParam Long userId){
         try {
             MappingUnit unit = new MappingUnit();
             unit.setUserId(userId);
             MappingUnit mappingUnit = mappingUnitService.queryOne(unit);
             if(null!=mappingUnit) {
-                return querySuccess();
+                return mappingUnit;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return queryFailed();
+        return null;
     }
+
 }

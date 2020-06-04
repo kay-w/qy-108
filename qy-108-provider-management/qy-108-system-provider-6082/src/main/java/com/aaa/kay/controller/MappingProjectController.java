@@ -1,11 +1,14 @@
 package com.aaa.kay.controller;
 
-import com.aaa.kay.base.BaseController;
+
 import com.aaa.kay.base.ResultData;
 import com.aaa.kay.model.MappingProject;
 import com.aaa.kay.service.MappingProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -17,8 +20,7 @@ import java.util.Map;
  * @Description: MappingProjectController
  */
 @RestController
-@RequestMapping("mappingProject")
-public class MappingProjectController extends BaseController {
+public class MappingProjectController{
 
     @Autowired
     private MappingProjectService mappingProjectService;
@@ -31,17 +33,17 @@ public class MappingProjectController extends BaseController {
      * @Return: com.york.base.ResultData<java.util.List<com.york.model.MappingProject>>
      **/
     @GetMapping("queryListMappingProjectByFiled")
-    public ResultData<List<MappingProject>> queryListMappingProjectByFiled(@RequestParam Map map){
+    public List<MappingProject> queryListMappingProjectByFiled(@RequestParam Map map){
         try {
             MappingProject mappingProject = mappingProjectService.newInstance(map);
             List<MappingProject> mappingProjects = mappingProjectService.queryList(mappingProject);
             if(null!=mappingProjects&&mappingProjects.size()>0) {
-                return querySuccess();
+                return mappingProjects;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return queryFailed();
+        return null;
     }
     /**
      * @Description:
@@ -51,19 +53,19 @@ public class MappingProjectController extends BaseController {
      * @param userId
      * @Return: com.york.base.ResultData<java.util.List<com.york.model.MappingProject>>
      **/
-    @PostMapping("queryListMappingProjectByUserId")
-    public ResultData<List<MappingProject>> queryListMappingProjectByUserId(@RequestParam Long userId){
+    @GetMapping("queryListMappingProjectByUserId")
+    public List<MappingProject> queryListMappingProjectByUserId(@RequestParam("userId") Long userId){
         try {
             MappingProject mappingProject = new MappingProject();
             mappingProject.setUserId(userId);
             List<MappingProject> mappingProjects = mappingProjectService.queryList(mappingProject);
             if(null!=mappingProjects&&mappingProjects.size()>0) {
-                return querySuccess();
+                return mappingProjects;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return queryFailed();
+        return null;
     }
     /**
      * @Description:
@@ -72,20 +74,21 @@ public class MappingProjectController extends BaseController {
      * @Date: 2020/5/31 0031 19:11
      * @param id
      * @Return: com.york.base.ResultData<com.york.model.MappingProject>
-     **/
+     *
+     * @return*/
     @GetMapping("queryMappingProjectById")
-    public ResultData<MappingProject> queryMappingProjectById(@RequestParam Long id){
+    public ResultData queryMappingProjectById(@RequestParam Long id){
         try {
             MappingProject mappingProject = new MappingProject();
             mappingProject.setId(id);
             MappingProject mappingProjects = mappingProjectService.queryOne(mappingProject);
             if(null!=mappingProjects&&"".equals(mappingProjects)) {
-                return querySuccess();
+                return new ResultData("2001","数据查询成功",mappingProjects);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return queryFailed();
+        return new ResultData("4001","数据查询失败");
     }
 
 }

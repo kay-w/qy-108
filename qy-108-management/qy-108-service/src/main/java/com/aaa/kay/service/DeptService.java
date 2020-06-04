@@ -22,20 +22,17 @@ public class DeptService extends BaseService<Dept> {
     private DeptMapper deptMapper;
     /**
      * @Author xyg
-     * @Date 16:06 2020\5\26 0026
+     * @Date 19:02 2020\6\4 0004
      * 部门管理 查询所有数据
      * @Param []
      * @return java.util.List<com.aaa.kay.model.Dept>
      **/
     public List<Dept> selectAllDept(){
-        // 调用查询语句获取数据depts
         List<Dept> depts = deptMapper.selectAll();
-        //判断是否获取到数据
-        if (depts.size()>0){
-            //获取成功 返回数据
+        //判断是否查询到数据
+        if (null != depts){
             return depts;
         }
-        //否则返回null
         return null;
     }
     /**
@@ -46,25 +43,31 @@ public class DeptService extends BaseService<Dept> {
      * @return java.lang.Integer
      **/
 
-    public Integer addDept(Dept dept){
-            //获取当前时间
-            String currentDate = DateUtils.getCurrentDate();
-            //判断是否获取成功
-            if(currentDate.length()>0){
-                //获取到把当前时间存入dept实体
-                dept.setCreateTime(currentDate);
+    public Integer addDept(Dept dept) {
+        // 判断 前端传值是否为空
+        if (null == dept || "".equals(dept)) {
+            return null;
+        }else {
+            dept.setCreateTime(DateUtils.getCurrentDate());
+            try {
+                Integer add = super.add(dept);
+                if (add > 0){
+                    return add;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        try {
-
-                return super.add(dept);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
-
     }
+
+
+
+
+
+
+
+
     /**
      * @Author xyg
      * @Date 9:34 2020\5\29 0029
@@ -75,9 +78,9 @@ public class DeptService extends BaseService<Dept> {
     public Integer deleteByPrimaryKey(Dept deptId){
         try {
             Integer delete = delete(deptId);
-            //判断是否为null
+            //判断是否删除成功
             if(delete > 0){
-                //不为空返回delete
+
                 return delete;
             }else {
                 System.out.println("删除出现异常 未成功");
@@ -118,13 +121,13 @@ public class DeptService extends BaseService<Dept> {
      * @Param [deptId]
      * @return com.aaa.kay.model.Dept
      **/
-    public Dept selectOne(Dept deptId){
+    public Dept selectOne(Dept dept){
 
         try {
-            Dept dept = queryOne(deptId);
+            Dept deptone = deptMapper.selectOne(dept);
             //判断是否查询到数据
-            if (null != dept){
-                return dept;
+            if (null != deptone){
+                return deptone;
             }
         } catch (Exception e) {
             e.printStackTrace();

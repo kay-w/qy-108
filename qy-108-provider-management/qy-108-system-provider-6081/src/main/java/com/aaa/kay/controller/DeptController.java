@@ -1,12 +1,8 @@
 package com.aaa.kay.controller;
-
-
-
 import com.aaa.kay.base.BaseService;
 import com.aaa.kay.base.CommonController;
 import com.aaa.kay.model.Dept;
 import com.aaa.kay.service.DeptService;
-import org.apache.ibatis.annotations.Lang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,9 +42,10 @@ public class DeptController extends CommonController<Dept> {
      * @Param [dept]
      * @return java.lang.Integer
      **/
-    @RequestMapping("/addDept")
+
+    @PutMapping("/addDept")
     public Integer addDept(@RequestBody Dept dept){
-        return addDept(dept);
+        return deptService.addDept(dept);
     }
     /**
      * @Author xyg
@@ -57,9 +54,9 @@ public class DeptController extends CommonController<Dept> {
      * @Param [deptId]
      * @return java.lang.Integer
      **/
-    @RequestMapping("/delete/{deptId}")
-    public Integer deleteByPrimaryKey(@PathVariable("deptId") Dept deptId){
-        return deleteByPrimaryKey(deptId);
+    @RequestMapping("/delete")
+    public Integer deleteByPrimaryKey(@RequestBody Dept dept){
+        return deptService.deleteByPrimaryKey(dept);
     }
     /**
      * @Author xyg
@@ -69,7 +66,7 @@ public class DeptController extends CommonController<Dept> {
      * @return java.lang.Integer
      **/
     @RequestMapping("/deletes")
-    public Integer deleteDeptByIds(@RequestBody List<Object> deptIds){
+    public Integer deleteDeptByIds(List<Object> deptIds){
         return deptService.batchDeleteDept(deptIds);
     }
     /**
@@ -80,7 +77,7 @@ public class DeptController extends CommonController<Dept> {
      * @return com.aaa.kay.model.Dept
      **/
     @RequestMapping("/selectDeptOne")
-    public Dept selectDeptOne(@RequestParam Dept deptId){
+    public Dept selectDeptOne(@RequestBody Dept deptId){
         return deptService.selectOne(deptId);
     }
     /**
@@ -90,7 +87,7 @@ public class DeptController extends CommonController<Dept> {
      * @Param [dept]
      * @return java.lang.Integer
      **/
-    @RequestMapping("/updateDept")
+    @PostMapping("/updateDept")
     public Integer UpdateDept1(@RequestBody Dept dept){
         return deptService.updateDept(dept);
 

@@ -8,6 +8,8 @@ package com.aaa.kay.status;
  * @Version V1.0
  **/
 public enum Status {
+    INSERT_SUCCESS("2001","添加成功"),
+    INSERT_FAILED("1001","添加失败"),
     LOGIN_SUCCESS("20001","登录成功"),
     LOGIN_FAILED("10001","登录失败"),
     USER_EXIST("20002","用户存在"),
@@ -22,7 +24,9 @@ public enum Status {
     QUERY_SUCCESS("10011","查询成功" ),
     QUERY_FAILED("10012","查询失败" ),
     ADD_SUCCESS("10013","新增成功"),
-    ADD_FAILED("10014","新增失败");
+    ADD_FAILED("10014","新增失败"),
+    SELECT_SUCCESS("2004","查询成功"),
+    SELECT_FAILED("1004","查询失败");
 
     Status(String code , String msg){
         this.code=code;
