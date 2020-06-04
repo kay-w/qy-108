@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NegativeOrZero;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @ClassName User
@@ -23,32 +25,82 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class User extends BaseModel {
-    //账号
-    private String username;
-    //密码
-    private String password;
-    @Column(name="dept_id")
-    // 部门id
-    private Long deptId;
-    // 邮箱
-    private String email;
-    // 联系电话
-    private String mobile;
-    //账号状态
-    private String status;
-    // 最后一次登录时间
-    @Column(name="last_login_time")
-    private String lastLoginTime;
-    //性别 0男 1女 2 保密
-    private String ssex;
-    //描述
-    private String description;
-    // 用户头像
-    private String avatar;
-    // 用户类型 0 单位用户 1审核用户 2管理员
-    private String type;
-    // 无状态token
-    private String token;
+public class User {
+    /**
+     * 用户ID
+     */
+    @Id
+    @Column(name = "user_id")
+    private Long userId;
 
+    /**
+     * 用户名
+     */
+    private String username;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 部门ID
+     */
+    @Column(name = "dept_id")
+    private Long deptId;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 联系电话
+     */
+    private String mobile;
+
+    /**
+     * 状态 0锁定 1有效
+     */
+    private String status;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private String createTime;
+
+    /**
+     * 修改时间
+     */
+    @Column(name = "modify_time")
+    private Date modifyTime;
+
+    /**
+     * 最近访问时间
+     */
+    @Column(name = "last_login_time")
+    private String lastLoginTime;
+
+    /**
+     * 性别 0男 1女 2保密
+     */
+    private String ssex;
+
+    /**
+     * 描述
+     */
+    private String description;
+
+    /**
+     * 用户头像
+     */
+    private String avatar;
+
+    /**
+     * 用户类型 0:单位用户 1:审核用户 2:管理员
+     */
+    private String type;
+
+    private String token;
 }

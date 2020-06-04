@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -26,8 +25,9 @@ public class LoginController {
     @Autowired
     private RedisService redisService;
     @PostMapping("/doLogin")
-    public TokenVo doLogin(@RequestBody User user, HttpServletRequest request){
-        return loginService.doLogin(user,redisService,request);
+    public TokenVo doLogin(@RequestBody User user){
+        System.out.println("登录启动");
+        return loginService.doLogin(user,redisService);
 
     }
 

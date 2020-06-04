@@ -25,7 +25,8 @@ import static com.aaa.kay.staticstatus.RequestURLProperties.PACKAGE_CONTROLLER_U
 public class Swagger2Config {
     @Bean
     public Docket createRestApi(){
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(PACKAGE_CONTROLLER_URL))
                 .paths(PathSelectors.any())
@@ -33,7 +34,9 @@ public class Swagger2Config {
 
     }
     private ApiInfo apiInfo(){
-        return new ApiInfoBuilder().title("测绘管理系统").description("某市的测绘管理系统")
+        return new ApiInfoBuilder()
+                .title("测绘管理系统")
+                .description("某市的测绘管理系统")
                 .contact(new Contact("kay wang","http://www.kay.com","599834251@qq.com"))
                 .version("1.0")
                 .build();

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.kay.mapper.MappingProjectMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.kay.model.MappingProject">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="project_type" jdbcType="VARCHAR" property="projectType" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="project_amount" jdbcType="DOUBLE" property="projectAmount" />
+    <result column="project_leader" jdbcType="VARCHAR" property="projectLeader" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="complete_time" jdbcType="VARCHAR" property="completeTime" />
+    <result column="acceptance_department" jdbcType="VARCHAR" property="acceptanceDepartment" />
+    <result column="acceptance_report" jdbcType="VARCHAR" property="acceptanceReport" />
+    <result column="task_source" jdbcType="VARCHAR" property="taskSource" />
+    <result column="project_area" jdbcType="DOUBLE" property="projectArea" />
+    <result column="scale" jdbcType="VARCHAR" property="scale" />
+    <result column="sheet_number" jdbcType="VARCHAR" property="sheetNumber" />
+    <result column="awards_department" jdbcType="VARCHAR" property="awardsDepartment" />
+    <result column="prize_level" jdbcType="VARCHAR" property="prizeLevel" />
+    <result column="project_quality_approval" jdbcType="VARCHAR" property="projectQualityApproval" />
+    <result column="winning_time" jdbcType="DATE" property="winningTime" />
+    <result column="acceptance_time" jdbcType="DATE" property="acceptanceTime" />
+    <result column="basic_content" jdbcType="VARCHAR" property="basicContent" />
+    <result column="credit_status" jdbcType="VARCHAR" property="creditStatus" />
+    <result column="submit_status" jdbcType="VARCHAR" property="submitStatus" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="schedule" jdbcType="INTEGER" property="schedule" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="modify_time" jdbcType="DATE" property="modifyTime" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="audit_status" jdbcType="INTEGER" property="auditStatus" />
+    <result column="results_status" jdbcType="INTEGER" property="resultsStatus" />
+    <result column="meridian" jdbcType="VARCHAR" property="meridian" />
+    <result column="coordinate_system" jdbcType="VARCHAR" property="coordinateSystem" />
+    <result column="management_level" jdbcType="VARCHAR" property="managementLevel" />
+    <result column="funding_source" jdbcType="VARCHAR" property="fundingSource" />
+    <result column="entrust_unit" jdbcType="VARCHAR" property="entrustUnit" />
+    <result column="accept_unit" jdbcType="VARCHAR" property="acceptUnit" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="center_point" jdbcType="VARCHAR" property="centerPoint" />
+    <result column="synchronization_status" jdbcType="INTEGER" property="synchronizationStatus" />
+    <result column="contract_time" jdbcType="TIMESTAMP" property="contractTime" />
+    <result column="coordinate" jdbcType="LONGVARCHAR" property="coordinate" />
+  </resultMap>
+
+</mapper>

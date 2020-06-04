@@ -10,5 +10,6 @@ import tk.mybatis.mapper.common.Mapper;
  * @Date 2020/5/16
  * @Version V1.0
  **/
+
 public interface UserMapper extends Mapper<User> {
 }

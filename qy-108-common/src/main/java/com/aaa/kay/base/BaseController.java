@@ -11,6 +11,7 @@ import static com.aaa.kay.status.Status.*;
  * @Date 2020/5/12
  * @Version V1.0
  **/
+
 public class BaseController {
     /**
      * @MethodName: LoginSuccess
@@ -515,6 +516,32 @@ public class BaseController {
         ResultData resultData = new ResultData();
         resultData.setCode(QUERY_FAILED.getCode());
         resultData.setMsg(QUERY_FAILED.getMsg());
+        return resultData;
+    }
+    /**
+     * @Author xyg
+     * @Date 9:38 2020\6\2 0002
+     * 新增成功
+     * @Param []
+     * @return com.aaa.kay.base.ResultData
+     **/
+    protected ResultData addSuccess(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(ADD_SUCCESS.getCode());
+        resultData.setMsg(ADD_SUCCESS.getMsg());
+        return resultData;
+    }
+    /**
+     * @Author xyg
+     * @Date 9:39 2020\6\2 0002
+     * 新增失败
+     * @Param []
+     * @return com.aaa.kay.base.ResultData
+     **/
+    protected ResultData addFailed(){
+        ResultData resultData = new ResultData();
+        resultData.setCode(ADD_FAILED.getCode());
+        resultData.setMsg(ADD_FAILED.getMsg());
         return resultData;
     }
 

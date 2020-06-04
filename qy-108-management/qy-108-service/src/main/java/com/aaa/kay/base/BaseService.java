@@ -151,7 +151,7 @@ public abstract class BaseService <T> {
         return mapper.select(t);
     }
     /**
-     * @MethodName: 分页查询 单纯的分页
+     * @MethodName: 分页查询
      * @Description: t 为 查询条件
      * @Param: [t, pageNo, pageSize]
      * @Return: com.github.pagehelper.PageInfo<T>
@@ -162,6 +162,21 @@ public abstract class BaseService <T> {
         PageHelper.startPage(pageNo,pageSize);
         List<T> select = mapper.select(t);
         PageInfo<T> pageInfo=new PageInfo<T>(select);
+        System.out.println("分页条件数据到的数据"+pageInfo);
+        return pageInfo;
+    }
+    /**
+     * @MethodName: queryListByPage
+     * @Description: 单纯的分页查询
+     * @Param: [pageNo, pageSize]
+     * @Return: com.github.pagehelper.PageInfo<T>
+     * @Author: 59983
+     * @Date: 2020/5/26
+    **/
+    public PageInfo<T> queryListByPage(Integer pageNo, Integer pageSize) throws Exception {
+        PageHelper.startPage(pageNo, pageSize);
+        List<T> select = mapper.selectAll();
+        PageInfo<T> pageInfo = new PageInfo<T>(select);
         return pageInfo;
     }
     /**
@@ -177,7 +192,7 @@ public abstract class BaseService <T> {
     }
     /**
      * @MethodName: 封装条件查询
-     * @Description: 粉鱼查询以及排序查询的通用方法 支持多条件查询
+     * @Description: 分页查询以及排序查询的通用方法 支持多条件查询
      * @Param: [pageNo, pageSize, where, orderByField, field]
      * @Return: java.util.List<T>
      * @Author: 59983
@@ -209,7 +224,8 @@ public abstract class BaseService <T> {
     }
     /**
      * @MethodName: 获取子类泛型类型
-     * @Description: TODO
+     * @Description: 获取子类泛型类型
+     *
      * @Param: []
      * @Return: java.lang.Class<T>
      * @Author: 59983

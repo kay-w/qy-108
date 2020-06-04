@@ -3,7 +3,6 @@ package com.aaa.kay.utils;
 import com.esotericsoftware.reflectasm.MethodAccess;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
-import org.springframework.boot.actuate.web.mappings.MappingsEndpoint;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,14 +36,13 @@ public class Map2BeanUtils {
              * 如果用map.putIfAbsent 如果key存在就不会存放
              */
             CONCURRENT_HASH_MAP.putIfAbsent(clazz, methodAccess);
-            // 循环数据
-            for (Map.Entry<String, Object> entry : map.entrySet()) {
-                // 于是就可以获取到Map中的各种数据 然后就需要setter方法进行赋值了
-                String setMethodName = setMethodName(entry.getKey());
-                int index = methodAccess.getIndex(setMethodName, entry.getValue().getClass());
-                methodAccess.invoke(instance, index, entry.getValue());
-            }
-
+        }
+        // 循环数据
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            // 于是就可以获取到Map中的各种数据 然后就需要setter方法进行赋值了
+            String setMethodName = setMethodName(entry.getKey());
+            int index = methodAccess.getIndex(setMethodName, entry.getValue().getClass());
+            methodAccess.invoke(instance, index, entry.getValue());
         }
         return instance;
     }

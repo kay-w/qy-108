@@ -20,7 +20,9 @@ public enum Status {
     UPDATE_FAILED("10010" ,"更新失败"),
     UPDATE_SUCCESS("10009","更新成功" ),
     QUERY_SUCCESS("10011","查询成功" ),
-    QUERY_FAILED("10012","查询失败" );
+    QUERY_FAILED("10012","查询失败" ),
+    ADD_SUCCESS("10013","新增成功"),
+    ADD_FAILED("10014","新增失败");
 
     Status(String code , String msg){
         this.code=code;
