@@ -49,6 +49,7 @@ public class LogAspect {
     public void pointcut(){
         // 只定义具体切哪一块
     }
+    //环绕通知
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws ClassNotFoundException {
         // 1.定义返回值

@@ -1,22 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aaa.kay.service.UserMapper">
-  <resultMap id="BaseResultMap" type="com.aaa.kay.model.User">
-    <id column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="status" jdbcType="CHAR" property="status" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.kay.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.kay.model.User" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="BIGINT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
     <result column="create_time" property="createTime" jdbcType="VARCHAR" />
-    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="VARCHAR" />
-    <result column="ssex" jdbcType="CHAR" property="ssex" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-    <result column="type" jdbcType="CHAR" property="type" />
-    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="ssex" property="ssex" jdbcType="CHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
 
+  <select id="selectUserByField" resultMap="BaseResultMap" parameterType="com.aaa.kay.model.User">
+    SELECT userId,username,ssex,email,dept_id,mobile,status,create_time
+    from t_user
+    <where>
+    1=1
+    <if test="username != null and username != ''">
+      AND username=#{username, jdbcType=VARCHAR}
+    </if>
+    <if test="deptId != null and deptId != '' ">
+      AND dept_id=#{deptId, jdbcType=BIGINT}
+    </if>
+  </where>
+  ORDER BY userId ASC
+  </select>
+
+  <select id="selectUserBySsex" resultMap="BaseResultMap">
+    select userId,username,ssex,email,dept_id,mobile,status,create_time
+    from t_user
+    where ssex= #{ssex,jdbcType=CHAR}
+  </select>
+
+  <select id="selectUserBySta" resultMap="BaseResultMap">
+     select userId,username,ssex,email,dept_id,mobile,status,create_time
+    from t_user
+    where status= #{status,jdbcType=CHAR}
+  </select>
 </mapper>

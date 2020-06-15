@@ -6,8 +6,10 @@ import com.aaa.kay.base.ResultData;
 import com.aaa.kay.model.User;
 import com.aaa.kay.service.IQYService;
 import com.aaa.kay.vo.TokenVo;
+import com.sun.org.apache.xpath.internal.operations.String;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,5 +50,8 @@ public class LoginController extends BaseController {
             return super.loginSuccess(tokenVo.getToken());
         }
         return super.loginFailed();
+
     }
+
+
 }

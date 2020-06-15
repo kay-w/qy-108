@@ -6,4 +6,5 @@ public class MenuTyoeProperties {
 
     public static final String MENU_TYPE_CAIDAN="0";
     public static final String MENU_TYPE_ANNIU="1";
+
 }

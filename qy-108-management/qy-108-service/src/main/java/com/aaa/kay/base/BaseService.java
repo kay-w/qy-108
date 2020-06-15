@@ -231,6 +231,23 @@ public abstract class BaseService <T> {
      * @Author: 59983
      * @Date: 2020/5/12
     **/
+    /**
+     * @author hhy
+     * @description
+     *    通过主键批量删除
+     *    能用java代码搞定的东西，千万不要上子查询
+     *    阿里巴巴代码规约：
+     *        如果联查超过两张表，要把联查拆开，放在java代码实现
+     *
+     * @param: [ids]
+     * @date 2020/5/13 9:42
+     * @return java.lang.Integer
+     * @throws
+     */
+    public Integer delete(List<Object> ids) throws Exception{
+        Example example = Example.builder(getTypeArguement()).where(Sqls.custom().andIn("id",ids)).build();
+        return mapper.deleteByExample(example);
+    }
     private Class<T> getTypeArguement(){
         if (null == cache){//如果缓存池中为null
             cache =(Class<T>) ((ParameterizedType)(this.getClass().getGenericSuperclass())).getActualTypeArguments()[0];

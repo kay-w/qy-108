@@ -307,6 +307,165 @@ public interface IQYService {
      **/
     @PostMapping("/updateDept")
     Integer UpdateDept1(@RequestBody Dept dept);
+    /**
+     * @author ljz
+     * @description 分页查询字典信息
+     * @param: [pageNo, pageSize]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/selectDictInfo")
+    PageInfo<Dict> selectDictInfo(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+
+    /**
+     * @author ljz
+     * @description 新增字典信息
+     * @param: [dict]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/addDict")
+    Boolean addDict(@RequestBody Dict dict);
+
+    /**
+     * @author ljz
+     * @description 根据id查询字典信息
+     * @param: [dict]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/selectDictById")
+    Dict selectDictById(@RequestBody Dict dict);
+
+    /**
+     * @author ljz
+     * @description 修改字典信息
+     * @param: [dict]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/updateDict")
+    Boolean updateDict(@RequestBody Dict dict);
+
+    /**
+     * @author ljz
+     * @description 根据id删除字典信息
+     * @param: [dict]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/deleteDictById")
+    Boolean deleteDictById(@RequestBody Dict dict);
+
+    /**
+     * @author ljz
+     * @description 批量删除字典信息
+     * @param: [ids]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/deleteDictByIds")
+    Integer deleteDictByIds(@RequestBody List<Object> ids);
+
+    /**
+     * 字典信息分页条件查询
+     *
+     * @param dict
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/selectDictByField")
+    PageInfo selectDictByField(@RequestBody Dict dict, @RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+    /**
+     * @author ljz
+     * @description 分页查询用户信息
+     * @param: [pageNo, pageSize]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/selectUserInfo")
+    PageInfo<User> selectUserInfo(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+
+    /**
+     * @author ljz
+     * @description 根据id查询用户信息
+     * @param: [user]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/selectInfoById")
+    User selectInfoById(@RequestBody User user);
+
+    /**
+     * @author ljz
+     * @description 根据id删除用户
+     * @param: [user]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/deleteUserById")
+    Boolean deleteUserById(@RequestBody User user);
+
+    /**
+     * @author ljz
+     * @description 新增用户信息
+     * @param: [user]
+     * @date 2020/5/27
+     **/
+
+
+    /**
+     * @author ljz
+     * @description 修改用户信息
+     * @param: [user]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/updateUser")
+    Boolean updateUser(@RequestBody User user);
+
+    /**
+     * @author ljz
+     * @description 批量删除用户
+     * @param: [ids]
+     * @date 2020/5/27
+     **/
+    @PostMapping("/deleteUserByIds")
+    Integer deleteUserByIds(@RequestBody List<Object> ids);
+
+    /**
+     * 用户分页条件查询
+     *
+     * @param user
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/selectUserByField")
+    PageInfo selectUserByField(@RequestBody User user, @RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+
+    /**
+     * 根据用户性别查询用户信息
+     *
+     * @param ssex
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/selectUserBySsex")
+    PageInfo selectUserBySsex(@RequestParam("ssex") String ssex, @RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+
+    /**
+     * 根据用户状态查询用户信息
+     *
+     * @param status
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/selectUserBySta")
+    PageInfo selectUserBySta(@RequestParam("status") String status, @RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
+
+    /**
+     * 重置密码
+     *
+     * @param user
+     * @return
+     */
+    @PostMapping("/resetUserPwd")
+    Integer resetUserPwd(@RequestBody User user);
+
 
 
 

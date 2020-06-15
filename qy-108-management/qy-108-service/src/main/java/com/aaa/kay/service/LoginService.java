@@ -22,6 +22,19 @@ import static com.aaa.kay.staticstatus.RedisProperties.*;
 public class LoginService extends BaseService<User> {
     @Autowired
     private UserMapper userMapper;
+    public static void main(String[] args) {
+//        Integer integer = new Integer(9);
+////        Integer integer1 =9;
+////        int integer2=9;
+////        System.out.println(integer.equals(integer1));
+////        System.out.println(integer==integer2);
+        String ss = "hello_world";
+        String[] s = ss.split("_");
+        int i = ss.indexOf("_");
+        char c = ss.charAt(i);
+        StringBuilder result = new StringBuilder().append(s[1]).append(c).append(s[0]);
+        System.out.println(result);
+    }
 /*    @Autowired
     private LoginLogMapper loginLogMapper;*/
     public TokenVo doLogin(User user, RedisService redisService){
@@ -62,7 +75,7 @@ public class LoginService extends BaseService<User> {
                 if (updateResult>0){
                     // 数据库更新成功 放入到redis服务器中
                     // 设置一个失效时间 30分钟
-                    String setResult = redisService.set(String.valueOf(u.getUserId()), token, XX, EX, 1800);
+                    String setResult = redisService.set(String.valueOf(u.getUserId()), token, NX, EX, 1800);
                     if ("OK".equals(setResult.toUpperCase())||"1".equals(setResult)){
                         return tokenVo.setIfSuccess(true).setToken(token).setRedisKey(String.valueOf(u.getUserId()));
                     }
